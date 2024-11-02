@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flag Quiz</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Happy+Monkey&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+
+<body id="app">
+  <h2>Flag Quiz by Victory Ma</h2>
+  <form id="container" action="/submit" method="post">
+    <div class="horizontal-container">
+      <h3>
+        <div>
+          High Score:
+          <span id="high-score">
+            <%= locals.highScore %>
+          </span>
+        </div>
+        <div>
+          Current Total Score:
+          <span id="score">
+            <%= locals.totalScore ? totalScore : "0" %>
+          </span>
+        </div>
+        <div id="hint">
+          Hint:
+          <span>
+            <%= question.hint %>
+          </span>
+        </div>
+      </h3>
+    </div>
+
+    <h1 id="countryFlag">
+      <%= question.flag %>
+    </h1>
+
+    <div class="answer-container">
+      <input type="text" name="answer" id="userInput" placeholder="What is this country?" autofocus autocomplete="off">
+    </div>
+    <button type="submit" name="submit" value="submit">SUBMIT</button>
+    <button type="submit" name="submit" value="give-up" id="give-up">GIVE UP</button>
+  </form>
+
+  <script>
+    var wasCorrect = "<%= locals.wasCorrect %>";
+    console.log(wasCorrect)
+    // if submit request has isCorrect as false, display restart button
+    if (wasCorrect === "false") {
+      alert('Game Over... Final Best Score: <%= locals.totalScore %>');
+      document.getElementById("app").innerHTML = '<a href="/" class="restart-button">Restart</a>'
+    }
+  </script>
+</body>
+</html>
