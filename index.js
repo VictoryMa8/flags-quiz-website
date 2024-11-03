@@ -36,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 let currentQuestion = {};
+let arrayOfCountries = [];
 
 // GET home page
 app.get("/", async (req, res) => {
@@ -44,7 +45,8 @@ app.get("/", async (req, res) => {
   console.log(currentQuestion);
   res.render("index.ejs", { 
     question: currentQuestion,
-    highScore: highScore
+    highScore: highScore,
+    arrayOfCountries
    });
 });
 
@@ -73,17 +75,34 @@ app.post("/submit", (req, res) => {
       question: currentQuestion,
       wasCorrect: isCorrect,
       totalScore: totalCorrect,
-      highScore: highScore
+      highScore: highScore,
+      arrayOfCountries: arrayOfCountries
     });
   } 
-  if (submit === "give-up") {
+  else if (submit === "give-up") {
     res.redirect("/")
   }
 });
 
 function nextQuestion() {
   const randomCountry = quiz[Math.floor(Math.random() * quiz.length)];
+  const randomCountry1 = quiz[Math.floor(Math.random() * quiz.length)];
+  const randomCountry2 = quiz[Math.floor(Math.random() * quiz.length)];
+  const randomCountry3 = quiz[Math.floor(Math.random() * quiz.length)];
+  arrayOfCountries = [randomCountry, randomCountry1, randomCountry2, randomCountry3]
+  shuffle(arrayOfCountries);
   currentQuestion = randomCountry;
+}
+
+function shuffle(array) {
+  let m = array.length, t, i;
+  while (m) {
+    i = Math.floor(Math.random() * m--);
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
+  }
+  return array;
 }
 
 app.listen(port, () => {

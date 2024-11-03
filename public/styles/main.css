@@ -11,7 +11,7 @@ body {
   justify-content: space-evenly;
   max-width: 40%;
   height: 500px;
-  margin: 10% auto;
+  margin: 5% auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
@@ -109,4 +109,18 @@ button:hover {
 
 #give-up:hover {
   background-color: #c85940;
+}
+
+#easy-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 40%;
+  height: 200px;
+  margin: 10% auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

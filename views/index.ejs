@@ -47,6 +47,13 @@
     <button type="submit" name="submit" value="give-up" id="give-up">GIVE UP</button>
   </form>
 
+  <div id="easy-mode">
+    Possible Answers:
+    <% for (let i = 0; i < arrayOfCountries.length; i++) { %>
+        <h3><%= i+1 %>. <%= arrayOfCountries[i].name %></h3>
+    <% } %>
+  </div>
+
   <script>
     var wasCorrect = "<%= locals.wasCorrect %>";
     console.log(wasCorrect)
