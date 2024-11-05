@@ -12,6 +12,7 @@
 
 <body id="app">
   <h2>Flag Quiz by Victory Ma</h2>
+  <%# container with scores, flag, and hint %>
   <form id="container" action="/submit" method="post">
     <div class="horizontal-container">
       <h3>
@@ -22,7 +23,7 @@
           </span>
         </div>
         <div>
-          Current Total Score:
+          Current Score:
           <span id="score">
             <%= locals.totalScore ? totalScore : "0" %>
           </span>
@@ -43,6 +44,7 @@
     <div class="answer-container">
       <input type="text" name="answer" id="userInput" placeholder="What is this country?" autofocus autocomplete="off">
     </div>
+    <%# submit and give up buttons %>
     <button type="submit" name="submit" value="submit">SUBMIT</button>
     <button type="submit" name="submit" value="give-up" id="give-up">GIVE UP</button>
   </form>
