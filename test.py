@@ -17,7 +17,11 @@ def main():
     print(bubble_sort(arr1))
     print("Enter your name: ")
     name = input()
-    print("Hello, " + name + ". Welcome.")
+    while name != "Victor":
+        print("Erm.. try again.. you are not cool guy Victor")
+        print("Enter your name: ")
+        name = input()
+    print("Ah I see that you are the cool guy Victor")
 
 if __name__ == "__main__":
     main()
