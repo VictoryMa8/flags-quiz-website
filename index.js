@@ -10,7 +10,7 @@ const db = new pg.Client({
   host: "localhost",
   database: "world",
   password: "",
-  port: 5433  
+  port: 5432  
 });
 
 db.connect();
@@ -23,7 +23,7 @@ let highScore = 0;
 // array of countries
 let quiz = [];
 
-db.query("SELECT * FROM countries", (err, res) => {
+db.query("SELECT * FROM flags", (err, res) => {
   if (err) {
     console.error("Error executing query", err.stack);
   } else {
